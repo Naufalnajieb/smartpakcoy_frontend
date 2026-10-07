@@ -1,0 +1,35 @@
+.greenhouse-status {
+  padding: 22px;
+}
+
+.heading-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: #2b9d78;
+  background: #e7f8f2;
+}
+
+.greenhouse-status-body {
+  padding: 18px;
+  border-radius: 14px;
+  background: #f5faf8;
+}
+
+.greenhouse-status-body p {
+  margin: 12px 0 0;
+  color: #667972;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.greenhouse-footer {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 18px;
+  color: #6f817a;
+  font-size: 12px;
+}

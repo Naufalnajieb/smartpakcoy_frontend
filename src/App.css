@@ -1,0 +1,66 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+}
+
+.main-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.main-content {
+  padding: 28px;
+}
+
+.card-panel {
+  background: white;
+  border: 1px solid #e6eeeb;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(24, 51, 45, 0.05);
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #35c48c;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  padding: 7px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-badge.success {
+  color: #19734f;
+  background: #e4f7ef;
+}
+
+.status-badge.danger {
+  color: #9f4141;
+  background: #fdeaea;
+}
+
+.status-badge.warning {
+  color: #996b13;
+  background: #fff5da;
+}
+
+.page-state {
+  min-height: 400px;
+  display: grid;
+  place-items: center;
+  color: #71837c;
+  font-size: 14px;
+}
+
+.page-state.error {
+  color: #c65353;
+}

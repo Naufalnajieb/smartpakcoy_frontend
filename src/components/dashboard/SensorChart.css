@@ -1,0 +1,55 @@
+.sensor-chart {
+  padding: 22px;
+  background: white;
+  border: 1px solid #e6eeeb;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(24, 51, 45, 0.05);
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.panel-heading h3 {
+  margin: 0;
+  color: #18332d;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.panel-heading span {
+  display: block;
+  margin-top: 3px;
+  color: #85958f;
+  font-size: 11px;
+}
+
+.chart-heading {
+  align-items: flex-start;
+}
+
+.sensor-select {
+  min-width: 140px;
+  padding: 8px 10px;
+  border: 1px solid #dde7e3;
+  border-radius: 9px;
+  background: white;
+  color: #355049;
+  font-size: 12px;
+}
+
+.chart-wrapper {
+  height: 300px;
+}
+
+.empty-chart {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #8a9994;
+  font-size: 13px;
+}

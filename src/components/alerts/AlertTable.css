@@ -1,0 +1,131 @@
+.alert-table-panel {
+  padding: 22px;
+  border: 1px solid #e4ece9;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 8px 24px rgba(24, 51, 45, 0.05);
+}
+
+.alert-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.alert-table-header h3 {
+  margin: 0;
+  color: #18332d;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.alert-table-header span {
+  display: block;
+  margin-top: 3px;
+  color: #85958f;
+  font-size: 11px;
+}
+
+.alert-table-count {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #eef7f4;
+  color: #3e7667 !important;
+  font-weight: 700;
+}
+
+.alert-table {
+  margin: 0;
+  font-size: 12px;
+}
+
+.alert-table thead th {
+  padding: 12px;
+  border-bottom: 1px solid #dde7e3;
+  color: #73857e;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.alert-table tbody td {
+  padding: 13px 12px;
+  color: #405850;
+  border-color: #edf2f0;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.alert-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.alert-severity {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.alert-severity.critical {
+  color: #a44343;
+  background: #fdeaea;
+}
+
+.alert-severity.warning {
+  color: #976b14;
+  background: #fff5dc;
+}
+
+.alert-severity.info {
+  color: #3f71ac;
+  background: #edf5ff;
+}
+
+.alert-severity .status-dot {
+  width: 7px;
+  height: 7px;
+}
+
+.alert-empty-state {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px dashed #d7e4df;
+  border-radius: 14px;
+  background: #f9fcfb;
+  color: #83938d;
+  text-align: center;
+}
+
+.alert-empty-state svg {
+  margin-bottom: 4px;
+  color: #49cda8;
+}
+
+.alert-empty-state strong {
+  color: #47625a;
+  font-size: 14px;
+}
+
+.alert-empty-state span {
+  max-width: 430px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.alert-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  margin-top: 16px;
+}

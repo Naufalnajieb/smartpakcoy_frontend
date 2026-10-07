@@ -1,0 +1,64 @@
+.dashboard-header {
+  height: 72px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border-bottom: 1px solid #e5ecea;
+}
+
+.header-title {
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.system-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.system-status.warning {
+  color: #996b13;
+}
+
+.system-status.danger {
+  color: #b64e4e;
+}
+
+.last-update {
+  color: #84958f;
+  font-size: 13px;
+}
+
+.header-icon-button {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #587068;
+  cursor: pointer;
+}
+
+.header-icon-button:hover {
+  background: #f0f5f3;
+}
+
+.system-status.warning {
+  color: #996b13;
+}
+
+.system-status.danger {
+  color: #b64e4e;
+}

@@ -1,0 +1,77 @@
+.sensor-history {
+  padding: 22px;
+}
+
+.sensor-history-table {
+  margin: 0;
+  font-size: 12px;
+}
+
+.sensor-history-table thead th {
+  padding: 12px;
+  border-bottom: 1px solid #dde7e3;
+  color: #73857e;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sensor-history-table tbody td {
+  padding: 13px 12px;
+  color: #405850;
+  border-color: #edf2f0;
+  white-space: nowrap;
+}
+
+.sensor-history-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.empty-table {
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  color: #84938e;
+  font-size: 13px;
+}
+
+.history-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  margin-top: 16px;
+}
+
+.pagination-button {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #e1e9e6;
+  border-radius: 8px;
+  background: white;
+  color: #60736c;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background: #edf8f4;
+  border-color: #8ad9c0;
+  color: #238c6d;
+}
+
+.pagination-button.active {
+  background: #49cda8;
+  border-color: #49cda8;
+  color: white;
+}
+
+.pagination-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

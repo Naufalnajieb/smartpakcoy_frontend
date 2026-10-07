@@ -1,0 +1,11 @@
+.sensors-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sensor-device-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}

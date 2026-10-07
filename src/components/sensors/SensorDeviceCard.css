@@ -1,0 +1,75 @@
+.sensor-device-card {
+  padding: 20px;
+  display: flex;
+  gap: 14px;
+  border: 1px solid #e4ece9;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 8px 24px rgba(24, 51, 45, 0.05);
+}
+
+.sensor-device-icon {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  display: grid;
+  place-items: center;
+  color: #2eb993;
+  background: #e8f8f2;
+  border-radius: 12px;
+}
+
+.sensor-device-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.sensor-device-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sensor-device-title h3 {
+  margin: 0;
+  color: #18332d;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.sensor-device-title > div > span {
+  display: block;
+  margin-top: 4px;
+  color: #84938e;
+  font-size: 11px;
+}
+
+.sensor-device-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.sensor-device-details div {
+  padding: 10px;
+  border-radius: 10px;
+  background: #f5faf8;
+}
+
+.sensor-device-details span,
+.sensor-device-details strong {
+  display: block;
+}
+
+.sensor-device-details span {
+  color: #899993;
+  font-size: 10px;
+}
+
+.sensor-device-details strong {
+  margin-top: 4px;
+  color: #27443c;
+  font-size: 13px;
+}

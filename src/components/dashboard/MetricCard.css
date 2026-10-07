@@ -1,0 +1,89 @@
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.metric-card {
+  min-height: 138px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  border: 1px solid #e6eeeb;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(24, 51, 45, 0.05);
+}
+
+.metric-icon {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+}
+
+.metric-icon.temperature {
+  color: #d95757;
+  background: #fff0ef;
+}
+
+.metric-icon.humidity {
+  color: #3b7fd5;
+  background: #edf5ff;
+}
+
+.metric-icon.light {
+  color: #db9a20;
+  background: #fff7e5;
+}
+
+.metric-content {
+  min-width: 0;
+}
+
+.metric-title {
+  display: block;
+  margin-bottom: 5px;
+  color: #70817b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.metric-value {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  color: #18332d;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.metric-value small {
+  color: #70817b;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.metric-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 7px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.metric-trend.up {
+  color: #2a9f70;
+}
+
+.metric-trend.down {
+  color: #d45f5f;
+}
+
+.metric-trend.neutral {
+  color: #83938d;
+}
