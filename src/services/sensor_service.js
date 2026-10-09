@@ -18,3 +18,12 @@ export async function getSensorAnalytics(params = {}) {
   const response = await api.get("/sensors/greenhouse/analytics", { params });
   return response.data;
 }
+
+export async function getSensorAlerts(params = {}) {
+  const response = await api.get(
+    "/sensors/greenhouse/alerts",
+    { params }
+  );
+
+  return response.data;
+}
