@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {Navigate,Outlet,Route,Routes} from "react-router";
 import { getLatestSensor } from "./services/sensor_service";
-import {connectSocket,disconnectSocket,onSensorUpdate} from "./services/socket_service";
+import {connectSocket,disconnectSocket,onSensorUpdate, onSensorLatest} from "./services/socket_service";
 
 import Sidebar from "./components/layout/Sidebar";
 import Header from "./components/layout/Header";
@@ -21,16 +21,23 @@ function DashboardShell() {
       .then((result) => setLatest(result.data))
       .catch((error) => console.error("Latest sensor error:", error));
   }, []);
-  useEffect(() => {
-  connectSocket();
 
-  const unsubscribe = onSensorUpdate((data) => {
-    setLatest(data);
-  });
-  return () => {
-    unsubscribe();
-    disconnectSocket();
-  };
+  useEffect(() => {
+    const unsubscribeLatest = onSensorLatest((data) => {
+      setLatest(data);
+    });
+
+    const unsubscribeUpdate = onSensorUpdate((data) => {
+      setLatest(data);
+    });
+
+    connectSocket();
+
+    return () => {
+      unsubscribeLatest();
+      unsubscribeUpdate();
+      disconnectSocket();
+    };
   }, []);
   
   return (

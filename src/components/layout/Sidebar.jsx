@@ -36,12 +36,12 @@ function Sidebar() {
 
         <img
           src="/images/smartpakcoy-logo.png"
-          alt="Smart Pakcoy"
+          alt="Smart Greenhouse"
         />
 
         <div>
           <strong>
-            Smart Pakcoy
+            Smart Greenhouse
           </strong>
 
           <span>

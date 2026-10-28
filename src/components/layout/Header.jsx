@@ -16,7 +16,7 @@ function Header({ latest }) {
 
       <div className="header-title">
         <span>
-          Smart Pakcoy
+          Smart Greenhouse
         </span>
       </div>
 

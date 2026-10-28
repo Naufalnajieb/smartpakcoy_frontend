@@ -105,3 +105,86 @@
   color: #83938d;
   font-size: 13px;
 }
+
+.alerts-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.alerts-filter-group {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 12px;
+  border: 1px solid #dce7e3;
+  border-radius: 11px;
+  background: white;
+  color: #526962;
+}
+
+.alerts-filter-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #51665f;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.alerts-date-input {
+  width: 135px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #27443c;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.alerts-date-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.alerts-apply-button {
+  min-height: 42px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #47c8a3;
+  border-radius: 11px;
+  background: #47c8a3;
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.alerts-apply-button:hover:not(:disabled) {
+  background: #35b58f;
+  border-color: #35b58f;
+}
+
+.alerts-apply-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .alerts-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .alerts-filters {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}

@@ -46,11 +46,15 @@ function Sensors() {
 
   return (
     <section className="sensors-page">
-      <div className="page-heading">
+      <div className="sensors-header">
         <div>
-          <span className="eyebrow">IOT DEVICE MONITORING</span>
+          <span className="sensors-eyebrow">
+            IOT DEVICE MONITORING
+          </span>
           <h1>Sensor Device</h1>
-          <p>Informasi perangkat dan pembacaan sensor greenhouse.</p>
+          <p>
+            Informasi perangkat dan pembacaan sensor greenhouse.
+          </p>
         </div>
       </div>
 

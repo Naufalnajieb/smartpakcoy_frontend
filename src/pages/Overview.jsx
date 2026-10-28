@@ -49,7 +49,7 @@ function Overview() {
       <div className="welcome-banner">
         <div>
           <span className="eyebrow">GREENHOUSE MONITORING</span>
-          <h1>Pakcoy Smart Greenhouse</h1>
+          <h1>Smart Greenhouse</h1>
           <p>Monitoring kondisi lingkungan greenhouse secara realtime.</p>
         </div>
 

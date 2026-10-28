@@ -9,3 +9,33 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
+
+.sensors-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.sensors-eyebrow {
+  display: block;
+  margin-bottom: 6px;
+  color: #3cbf99;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.sensors-header h1 {
+  margin: 0;
+  color: #18332d;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.sensors-header p {
+  max-width: 680px;
+  margin: 7px 0 0;
+  color: #7a8b85;
+  font-size: 13px;
+}
