@@ -1,10 +1,13 @@
 
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:3000", {
-  autoConnect: false,
-  transports: ["websocket"]
-});
+const socket = io(
+  import.meta.env.VITE_SOCKET_URL || "http://localhost:3000",
+  {
+    autoConnect: false,
+    transports: ["websocket"]
+  }
+);
 
 export function connectSocket() {
   if (!socket.connected) {
