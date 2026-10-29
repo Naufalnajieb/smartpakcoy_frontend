@@ -1,6 +1,15 @@
-import {LayoutDashboard,ChartLine,Cpu,Bell} from "lucide-react";
-import { NavLink } from "react-router";
+import { useEffect } from "react";
+import {
+  LayoutDashboard,
+  ChartLine,
+  Cpu,
+  Bell,
+  Moon,
+  Sun,
+  X
+} from "lucide-react";
 
+import { NavLink } from "react-router";
 import "./Sidebar.css";
 
 const menuItems = [
@@ -26,82 +35,128 @@ const menuItems = [
   }
 ];
 
+function Sidebar({
+  theme = "light",
+  onToggleTheme,
+  mobileOpen = false,
+  onClose = () => {}
+}) {
+  const isDark = theme === "dark";
 
-function Sidebar() {
+  useEffect(() => {
+    function handleEscape(event) {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    }
+
+    if (mobileOpen) {
+      document.addEventListener("keydown", handleEscape);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [mobileOpen, onClose]);
+
   return (
-    <aside className="sidebar">
-
-      {/* Brand */}
-      <div className="sidebar-brand">
-
-        <img
-          src="/images/smartpakcoy-logo.png"
-          alt="Smart Greenhouse"
+    <>
+      {mobileOpen && (
+        <button
+          type="button"
+          className="sidebar-backdrop"
+          onClick={onClose}
+          aria-label="Tutup menu navigasi"
         />
+      )}
 
-        <div>
-          <strong>
-            Smart Greenhouse
-          </strong>
+      <aside
+        className={`sidebar ${mobileOpen ? "mobile-open" : ""}`}
+      >
+        <div className="sidebar-top">
+          <div className="sidebar-brand">
+            <img
+              src="/images/smartpakcoy-logo.png"
+              alt="Smart Greenhouse"
+            />
 
-          <span>
-            Greenhouse Monitoring
-          </span>
+            <div>
+              <strong>Smart Greenhouse</strong>
+              <span>Greenhouse Monitoring</span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="sidebar-mobile-close"
+            onClick={onClose}
+            aria-label="Tutup menu"
+          >
+            <X size={23} />
+          </button>
         </div>
 
-      </div>
+        <div className="sidebar-mobile-caption">
+          NAVIGATION
+        </div>
 
+        <nav className="sidebar-nav">
+          {menuItems.map((item, index) => {
+            const Icon = item.icon;
 
-      {/* Navigation */}
-      <nav className="sidebar-nav">
+            return (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.path === "/dashboard"}
+                onClick={onClose}
+                className={({ isActive }) =>
+                  `sidebar-link ${isActive ? "active" : ""}`
+                }
+              >
+                <Icon size={21} />
 
-        {menuItems.map((item) => {
+                <span className="sidebar-link-label">
+                  {item.label}
+                </span>
+              </NavLink>
+            );
+          })}
+        </nav>
 
-          const Icon = item.icon;
-
-          return (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              end={item.path === "/dashboard"}
-              className={({ isActive }) =>
-                `sidebar-link ${
-                  isActive ? "active" : ""
-                }`
-              }
-            >
-
-              <Icon size={20} />
-
-              <span>
-                {item.label}
-              </span>
-
-            </NavLink>
-          );
-
-        })}
-
-      </nav>
-
-
-      {/* Device */}
         <div className="sidebar-footer">
-        <div className="connection-indicator">
-          <span className="status-dot"></span>
-          <div>
-            <strong>
-              IoT_01
-            </strong>
-            <small>
-              Greenhouse Device
-            </small>
+          <div className="theme-toggle-row">
+            <div className="theme-toggle-copy">
+              {isDark ? <Moon size={19} /> : <Sun size={19} />}
+
+              <div>
+                <strong>Dark Mode</strong>
+                <small>{isDark ? "Aktif" : "Nonaktif"}</small>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              className={`theme-switch ${isDark ? "active" : ""}`}
+              role="switch"
+              aria-checked={isDark}
+              aria-label="Aktifkan atau nonaktifkan dark mode"
+              onClick={() => {
+                onToggleTheme();
+                onClose();
+              }}
+            >
+              <span />
+            </button>
+          </div>
+
+          <div className="sidebar-mobile-footer">
+            SMART GREENHOUSE <span>·</span> PAKCOY MONITORING
           </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </>
   );
 }
-
 
 export default Sidebar;

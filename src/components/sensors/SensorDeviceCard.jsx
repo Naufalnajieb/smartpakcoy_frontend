@@ -1,4 +1,4 @@
-import { CheckCircle2, Cpu, Droplets, Sun } from "lucide-react";
+import { Cpu, Droplets, Sun } from "lucide-react";
 import "./SensorDeviceCard.css";
 
 const DEVICE_ICONS = {
@@ -7,19 +7,41 @@ const DEVICE_ICONS = {
   bh1750: Sun
 };
 
-function SensorDeviceCard({ type, name, description, status = "active", details = [] }) {
-  const Icon = DEVICE_ICONS[type] || Cpu;
-  const statusConfig = {
-    active: { label: "Active", className: "success" },
-    delayed: { label: "Delayed", className: "warning" },
-    "no-data": { label: "No Data", className: "danger" }
-  };
+const DEVICE_STATUS = {
+  active: {
+    label: "Data Active",
+    className: "success"
+  },
+  delayed: {
+    label: "Delayed",
+    className: "warning"
+  },
+  inactive: {
+    label: "No Data",
+    className: "danger"
+  },
+  "no-data": {
+    label: "No Data",
+    className: "danger"
+  }
+};
 
-  const currentStatus = statusConfig[status] || statusConfig["no-data"];
+function SensorDeviceCard({
+  type,
+  name,
+  description,
+  status = "no-data",
+  details = []
+}) {
+  const Icon = DEVICE_ICONS[type] || Cpu;
+  const statusConfig =
+    DEVICE_STATUS[status] || DEVICE_STATUS["no-data"];
 
   return (
     <article className="sensor-device-card">
-      <div className="sensor-device-icon"><Icon size={22} /></div>
+      <div className="sensor-device-icon">
+        <Icon size={22} />
+      </div>
 
       <div className="sensor-device-main">
         <div className="sensor-device-title">
@@ -28,11 +50,10 @@ function SensorDeviceCard({ type, name, description, status = "active", details 
             <span>{description}</span>
           </div>
 
-          <span className={`status-badge ${currentStatus.className}`}>
+          <span className={`status-badge ${statusConfig.className}`}>
             <span className="status-dot" />
-            {currentStatus.label}
+            {statusConfig.label}
           </span>
-
         </div>
 
         {details.length > 0 && (

@@ -16,11 +16,23 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 100%;
+  min-height: 100%;
+}
+
 body {
-  margin: 0;
-  min-width: 1200px;
+  width: 100%;
+  min-width: 0;
   min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
   background: #f4f8f7;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
 }
 
 a {
@@ -28,6 +40,413 @@ a {
   color: inherit;
 }
 
-button {
+button,
+input,
+select,
+textarea {
   font: inherit;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+/* ===== Dark theme ===== */
+
+[data-theme="dark"] body {
+  color: #e4eee8;
+  background: #101915;
+}
+
+[data-theme="dark"] .main-wrapper,
+[data-theme="dark"] .main-content {
+  color: #e4eee8;
+  background: #101915;
+}
+
+[data-theme="dark"] .dashboard-header,
+[data-theme="dark"] .card-panel,
+[data-theme="dark"] .metric-card,
+[data-theme="dark"] .sensor-chart,
+[data-theme="dark"] .greenhouse-status,
+[data-theme="dark"] .device-status,
+[data-theme="dark"] .analytics-card,
+[data-theme="dark"] .sensor-history,
+[data-theme="dark"] .alert-table-panel,
+[data-theme="dark"] .alert-summary-card {
+  color: #e4eee8;
+  background: #18251f;
+  border-color: #2c4037;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .analytics-summary,
+[data-theme="dark"] .alerts-summary-bar,
+[data-theme="dark"] .analytics-empty-state,
+[data-theme="dark"] .alerts-empty-state,
+[data-theme="dark"] .alert-empty-state,
+[data-theme="dark"] .alert-loading,
+[data-theme="dark"] .alerts-status-banner,
+[data-theme="dark"] .greenhouse-status-body,
+[data-theme="dark"] .sensor-device-details div,
+[data-theme="dark"] .analytics-stat-item {
+  color: #d6e5dd;
+  background: #202f28;
+  border-color: #334a3f;
+}
+
+[data-theme="dark"] .header-title,
+[data-theme="dark"] .analytics-header h1,
+[data-theme="dark"] .sensors-header h1,
+[data-theme="dark"] .alerts-header h1,
+[data-theme="dark"] .welcome-banner h1,
+[data-theme="dark"] .panel-heading h3,
+[data-theme="dark"] .metric-value,
+[data-theme="dark"] .sensor-device-title h3,
+[data-theme="dark"] .analytics-card-header h2,
+[data-theme="dark"] .analytics-stat-item strong,
+[data-theme="dark"] .alert-table-header h3,
+[data-theme="dark"] .alert-summary-card strong,
+[data-theme="dark"] .device-info strong,
+[data-theme="dark"] .alerts-summary-bar strong,
+[data-theme="dark"] .analytics-summary strong {
+  color: #e4eee8;
+}
+
+[data-theme="dark"] .last-update,
+[data-theme="dark"] .panel-heading span,
+[data-theme="dark"] .metric-title,
+[data-theme="dark"] .metric-value small,
+[data-theme="dark"] .sensors-header p,
+[data-theme="dark"] .analytics-header p,
+[data-theme="dark"] .alerts-header p,
+[data-theme="dark"] .sensor-device-title > div > span,
+[data-theme="dark"] .sensor-device-details span,
+[data-theme="dark"] .device-info span,
+[data-theme="dark"] .analytics-card-label,
+[data-theme="dark"] .analytics-summary span,
+[data-theme="dark"] .alerts-summary-bar span {
+  color: #9db2a7;
+}
+
+[data-theme="dark"] .pagination-button,
+[data-theme="dark"] .sensor-select,
+[data-theme="dark"] .analytics-filter-group,
+[data-theme="dark"] .alerts-filter-group,
+[data-theme="dark"] .sensor-export-field select,
+[data-theme="dark"] .sensor-export-field input,
+[data-theme="dark"] .sensor-export-close {
+  color: #e4eee8;
+  background: #202f28;
+  border-color: #3a5146;
+}
+
+[data-theme="dark"] .analytics-time-input,
+[data-theme="dark"] .analytics-date-input,
+[data-theme="dark"] .alerts-date-input {
+  color: #e4eee8;
+}
+
+[data-theme="dark"] .sensor-history-table tbody td,
+[data-theme="dark"] .alert-table tbody td {
+  color: #d6e5dd;
+  border-color: #2c4037;
+}
+
+[data-theme="dark"] .sensor-history-table thead th,
+[data-theme="dark"] .alert-table thead th {
+  color: #a8bdb2;
+  border-color: #2c4037;
+}
+
+[data-theme="dark"] .device-item {
+  border-color: #334a3f;
+  background: #1c2a23;
+}
+
+[data-theme="dark"] .heading-icon,
+[data-theme="dark"] .device-icon {
+  background: #234237;
+}
+
+[data-theme="dark"] .header-icon-button {
+  color: #c2d5ca;
+}
+
+[data-theme="dark"] .header-icon-button:hover {
+  background: #263a30;
+}
+
+[data-theme="dark"] .notification-dropdown {
+  color: #e4eee8;
+  background: #18251f;
+  border-color: #2c4037;
+}
+
+[data-theme="dark"] .notification-dropdown-header {
+  border-color: #2c4037;
+}
+
+[data-theme="dark"] .notification-dropdown-header h3,
+[data-theme="dark"] .notification-item strong {
+  color: #e4eee8;
+}
+
+[data-theme="dark"] .notification-item,
+[data-theme="dark"] .notification-empty {
+  border-color: #2c4037;
+  background: #202f28;
+}
+
+[data-theme="dark"] .notification-item p,
+[data-theme="dark"] .notification-empty p {
+  color: #a8bdb2;
+}
+
+[data-theme="dark"] .notification-all-link {
+  border-color: #2c4037;
+}
+
+[data-theme="dark"] .sensor-export-panel {
+  color: #e4eee8;
+  background: #182a22;
+  border-color: #335044;
+}
+
+[data-theme="dark"] .sensor-export-panel-title h4,
+[data-theme="dark"] .sensor-export-field > span {
+  color: #e4eee8;
+}
+
+[data-theme="dark"] .sensor-export-panel-title p {
+  color: #a8bdb2;
+}
+
+[data-theme="dark"] .export-status {
+  color: #d6e5dd;
+  background: #202f28;
+  border-color: #334a3f;
+}
+
+[data-theme="dark"] .export-status.success {
+  color: #b9ead3;
+  background: #1b392b;
+  border-color: #315b45;
+}
+
+[data-theme="dark"] .export-status.error {
+  color: #ffc4c4;
+  background: #402323;
+  border-color: #633636;
+}
+
+[data-theme="dark"] .sensor-export-trigger {
+  color: #a4ead1;
+  background: #1c382d;
+  border-color: #315b45;
+}
+
+[data-theme="dark"] .recharts-cartesian-grid line {
+  stroke: #35483e;
+}
+
+[data-theme="dark"] .recharts-text {
+  fill: #a8bdb2;
+}
+
+/* ======================================
+   DARK MODE FIX: SENSORS AND ALERTS
+====================================== */
+
+html[data-theme="dark"] .sensor-device-card,
+html[data-theme="dark"] .sensor-history,
+html[data-theme="dark"] .alert-table-panel,
+html[data-theme="dark"] .alert-summary-card,
+html[data-theme="dark"] .alerts-period,
+html[data-theme="dark"] .alerts-status-banner {
+  color: #e4eee8 !important;
+  background: #18251f !important;
+  border-color: #2c4037 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+html[data-theme="dark"] .sensor-device-title h3,
+html[data-theme="dark"] .sensor-device-details strong,
+html[data-theme="dark"] .alert-table-header h3,
+html[data-theme="dark"] .alert-summary-card strong,
+html[data-theme="dark"] .alerts-header h1,
+html[data-theme="dark"] .alerts-status-banner strong {
+  color: #e4eee8 !important;
+}
+
+html[data-theme="dark"] .sensor-device-title > div > span,
+html[data-theme="dark"] .sensor-device-details span,
+html[data-theme="dark"] .alert-table-header > div > span,
+html[data-theme="dark"] .alerts-header p,
+html[data-theme="dark"] .alerts-status-banner span {
+  color: #a6b9ae !important;
+}
+
+html[data-theme="dark"] .sensor-device-details div {
+  color: #d6e5dd !important;
+  background: #202f28 !important;
+  border-color: #334a3f !important;
+}
+
+html[data-theme="dark"] .sensor-device-icon,
+html[data-theme="dark"] .alerts-status-icon {
+  color: #83e1bd !important;
+  background: #234237 !important;
+}
+
+html[data-theme="dark"] .alerts-period {
+  color: #d6e5dd !important;
+}
+
+html[data-theme="dark"] .alert-table-count {
+  color: #a7e5cd !important;
+  background: #234237 !important;
+}
+
+/* Bootstrap table variables */
+html[data-theme="dark"] .table {
+  --bs-table-color: #d6e5dd;
+  --bs-table-bg: #18251f;
+  --bs-table-border-color: #33483d;
+  --bs-table-striped-color: #d6e5dd;
+  --bs-table-striped-bg: #202f28;
+  --bs-table-active-color: #eef8f2;
+  --bs-table-active-bg: #263a30;
+  --bs-table-hover-color: #eef8f2;
+  --bs-table-hover-bg: #22372d;
+
+  color: #d6e5dd !important;
+  background-color: #18251f !important;
+  border-color: #33483d !important;
+}
+
+html[data-theme="dark"] .table > :not(caption) > * > * {
+  color: #d6e5dd !important;
+  background-color: #18251f !important;
+  border-color: #33483d !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="dark"] .table thead th {
+  color: #9eb7a9 !important;
+  background-color: #202f28 !important;
+}
+
+html[data-theme="dark"] .table tbody tr:hover > * {
+  color: #eef8f2 !important;
+  background-color: #22372d !important;
+}
+
+/* Empty states and alerts */
+html[data-theme="dark"] .alert-empty-state,
+html[data-theme="dark"] .alerts-empty-state,
+html[data-theme="dark"] .alerts-status-banner {
+  color: #d6e5dd !important;
+  background: #18251f !important;
+  border-color: #33483d !important;
+}
+
+html[data-theme="dark"] .alert-empty-state strong,
+html[data-theme="dark"] .alerts-empty-state strong {
+  color: #e4eee8 !important;
+}
+
+html[data-theme="dark"] .alert-empty-state span,
+html[data-theme="dark"] .alerts-empty-state span {
+  color: #a6b9ae !important;
+}
+
+/* Form controls on Alerts */
+html[data-theme="dark"] .alerts-filter-group,
+html[data-theme="dark"] .alerts-date-input,
+html[data-theme="dark"] .alerts-apply-button {
+  color: #e4eee8 !important;
+  background-color: #202f28 !important;
+  border-color: #3a5146 !important;
+}
+
+html[data-theme="dark"] .alerts-date-input {
+  color-scheme: dark;
+}
+
+/* Consistent text and pagination */
+html[data-theme="dark"] .sensor-history-table tbody td,
+html[data-theme="dark"] .alert-table tbody td {
+  color: #d6e5dd !important;
+}
+
+html[data-theme="dark"] .sensor-history-table thead th,
+html[data-theme="dark"] .alert-table thead th {
+  color: #9eb7a9 !important;
+}
+
+html[data-theme="dark"] .pagination-button {
+  color: #c6d9cf !important;
+  background: #202f28 !important;
+  border-color: #3a5146 !important;
+}
+
+html[data-theme="dark"] .pagination-button.active {
+  color: #ffffff !important;
+  background: #238c6d !important;
+  border-color: #238c6d !important;
+}
+
+/* ===== Dynamic status indicators ===== */
+
+.status-dot {
+  flex: 0 0 9px;
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #9aa7a1;
+  transition: background 0.2s ease;
+}
+
+.status-dot.success,
+.status-badge.success .status-dot,
+.system-status.success .status-dot,
+.live-badge.active .status-dot {
+  background: #35c48c !important;
+}
+
+.status-dot.warning,
+.status-badge.warning .status-dot,
+.system-status.warning .status-dot,
+.live-badge.delayed .status-dot,
+.alert-severity.warning .status-dot,
+.notification-severity.warning .status-dot {
+  background: #e4ad36 !important;
+}
+
+.status-dot.danger,
+.status-badge.danger .status-dot,
+.system-status.danger .status-dot,
+.live-badge.inactive .status-dot,
+.alert-severity.critical .status-dot,
+.notification-severity.critical .status-dot {
+  background: #e05252 !important;
+}
+
+.alert-severity.info .status-dot,
+.notification-severity.info .status-dot {
+  background: #35c48c !important;
+}
+
+.live-badge.delayed {
+  color: #8e6718;
+}
+
+.alert-severity .status-dot,
+.notification-severity .status-dot {
+  width: 7px;
+  height: 7px;
+  flex-basis: 7px;
 }

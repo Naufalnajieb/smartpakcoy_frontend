@@ -1,8 +1,37 @@
 import { Leaf, Radio } from "lucide-react";
+import { getConnectionStatus } from "../../utils/sensor";
+
 import "./GreenhouseStatus.css";
 
-function GreenhouseStatus({ latest }) {
-  const hasData = Boolean(latest);
+function GreenhouseStatus({ latest, status }) {
+  const currentStatus =
+    status || getConnectionStatus(latest?.timestamp);
+
+  const statusConfig = {
+    active: {
+      label: "Data Active",
+      className: "success",
+      message: "Greenhouse sedang menerima pembacaan sensor.",
+      footer: "Live sensor connection"
+    },
+    delayed: {
+      label: "Data Terlambat",
+      className: "warning",
+      message: "Pembacaan sensor terakhir mulai terlambat.",
+      footer: "Sensor data delayed"
+    },
+    "no-data": {
+      label: "System Offline",
+      className: "danger",
+      message: "Tidak ada pembacaan sensor terbaru yang tersedia.",
+      footer: "Waiting for sensor data"
+    }
+  }[currentStatus] || {
+    label: "System Offline",
+    className: "danger",
+    message: "Tidak ada pembacaan sensor terbaru yang tersedia.",
+    footer: "Waiting for sensor data"
+  };
 
   return (
     <article className="greenhouse-status card-panel">
@@ -10,6 +39,7 @@ function GreenhouseStatus({ latest }) {
         <div className="heading-icon">
           <Leaf size={20} />
         </div>
+
         <div>
           <h3>Greenhouse Status</h3>
           <span>Monitoring environment</span>
@@ -17,21 +47,17 @@ function GreenhouseStatus({ latest }) {
       </div>
 
       <div className="greenhouse-status-body">
-        <div className={`status-badge ${hasData ? "success" : "danger"}`}>
+        <div className={`status-badge ${statusConfig.className}`}>
           <span className="status-dot" />
-          {hasData ? "Data Active" : "No Data"}
+          {statusConfig.label}
         </div>
 
-        <p>
-          {hasData
-            ? "Greenhouse sedang menerima pembacaan sensor."
-            : "Belum ada pembacaan sensor yang tersedia."}
-        </p>
+        <p>{statusConfig.message}</p>
       </div>
 
       <div className="greenhouse-footer">
         <Radio size={16} />
-        <span>{hasData ? "Live sensor connection" : "Waiting for sensor data"}</span>
+        <span>{statusConfig.footer}</span>
       </div>
     </article>
   );

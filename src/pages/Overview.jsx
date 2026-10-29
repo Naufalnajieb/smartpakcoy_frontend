@@ -3,35 +3,66 @@ import { useOutletContext } from "react-router";
 import { Droplets, Sun, Thermometer } from "lucide-react";
 
 import { getSensorHistory } from "../services/sensor_service";
+import { getConnectionStatus } from "../utils/sensor";
+
 import MetricCard from "../components/dashboard/MetricCard";
 import SensorChart from "../components/dashboard/SensorChart";
 import DeviceStatus from "../components/dashboard/DeviceStatus";
 import GreenhouseStatus from "../components/dashboard/GreenhouseStatus";
+
 import "./Overview.css";
 
 function Overview() {
   const { latest } = useOutletContext();
+
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
+    const timer = window.setInterval(() => {
+      setNow(Date.now());
+    }, 30 * 1000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
     async function loadOverview() {
       try {
         setLoading(true);
         setError("");
 
         const historyResponse = await getSensorHistory(50);
-        setHistory(historyResponse.data);
+
+        if (!cancelled) {
+          setHistory(
+            Array.isArray(historyResponse.data)
+              ? historyResponse.data
+              : []
+          );
+        }
       } catch (err) {
         console.error("Overview data error:", err);
-        setError("Gagal mengambil data sensor.");
+
+        if (!cancelled) {
+          setError("Gagal mengambil data sensor.");
+        }
       } finally {
-        setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     }
 
     loadOverview();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   if (loading) {
@@ -42,20 +73,61 @@ function Overview() {
     return <div className="page-state error">{error}</div>;
   }
 
-  const hasData = Boolean(latest);
+  const connectionStatus = getConnectionStatus(
+    latest?.timestamp,
+    now
+  );
+
+  const hasTemperature =
+    latest?.temperature !== undefined &&
+    latest?.temperature !== null;
+
+  const hasHumidity =
+    latest?.humidity !== undefined &&
+    latest?.humidity !== null;
+
+  const hasLight =
+    latest?.lightIntensity !== undefined &&
+    latest?.lightIntensity !== null;
+
+  const deviceStatuses = {
+    esp32: connectionStatus,
+    dht11:
+      hasTemperature && hasHumidity
+        ? connectionStatus
+        : "no-data",
+    bh1750: hasLight ? connectionStatus : "no-data"
+  };
+
+  const liveConfig = {
+    active: {
+      label: "Live Monitoring",
+      className: "active"
+    },
+    delayed: {
+      label: "Data Terlambat",
+      className: "delayed"
+    },
+    "no-data": {
+      label: "System Offline",
+      className: "inactive"
+    }
+  }[connectionStatus];
 
   return (
     <section className="overview-page">
       <div className="welcome-banner">
         <div>
           <span className="eyebrow">GREENHOUSE MONITORING</span>
-          <h1>Smart Greenhouse</h1>
-          <p>Monitoring kondisi lingkungan greenhouse secara realtime.</p>
+          <h1>Pakcoy Smart Greenhouse</h1>
+          <p>
+            Monitoring kondisi lingkungan greenhouse secara realtime.
+          </p>
         </div>
 
-        <div className={`live-badge ${hasData ? "active" : "inactive"}`}>
+        <div className={`live-badge ${liveConfig.className}`}>
           <span className="status-dot" />
-          {hasData ? "Live Monitoring" : "No Data"}
+          {liveConfig.label}
         </div>
       </div>
 
@@ -87,10 +159,14 @@ function Overview() {
 
       <div className="overview-main-grid">
         <SensorChart history={history} />
-        <GreenhouseStatus latest={latest} />
+
+        <GreenhouseStatus
+          latest={latest}
+          status={connectionStatus}
+        />
       </div>
 
-      <DeviceStatus statuses={latest?.deviceStatus} />
+      <DeviceStatus statuses={deviceStatuses} />
     </section>
   );
 }

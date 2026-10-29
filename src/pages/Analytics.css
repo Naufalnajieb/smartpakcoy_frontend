@@ -199,35 +199,47 @@
 
 .analytics-card-content {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 330px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
   align-items: center;
-  gap: 26px;
+  gap: 20px;
+  min-width: 0;
+}
+
+.analytics-card-content > * {
+  min-width: 0;
 }
 
 .analytics-card .sensor-chart {
+  width: 100%;
+  min-width: 0;
   padding: 0;
   border: 0;
   box-shadow: none;
 }
 
-.analytics-card .sensor-chart .panel-heading {
-  display: none;
+.analytics-card .chart-wrapper {
+  width: 100%;
+  min-width: 0;
 }
 
 .analytics-statistics {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  min-width: 0;
+  width: 100%;
 }
 
 .analytics-stat-item {
+  min-width: 0;
   min-height: 105px;
-  padding: 17px 14px;
+  padding: 15px 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 14px;
   background: #f5faf8;
+  overflow-wrap: anywhere;
 }
 
 .analytics-stat-item span {
@@ -237,10 +249,17 @@
 }
 
 .analytics-stat-item strong {
+  display: block;
+  max-width: 100%;
   margin-top: 8px;
   color: #18332d;
-  font-size: 22px;
+  font-size: clamp(14px, 1.2vw, 22px);
   font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.analytics-card .sensor-chart .panel-heading {
+  display: none;
 }
 
 .analytics-stat-item small {
@@ -333,5 +352,46 @@
 
   .analytics-card-content {
     grid-template-columns: minmax(0, 1fr) 280px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .analytics-card-content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .analytics-statistics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .analytics-card {
+    padding: 14px;
+  }
+
+  .analytics-card-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .analytics-card-content {
+    gap: 14px;
+  }
+
+  .analytics-statistics {
+    gap: 7px;
+  }
+
+  .analytics-stat-item {
+    padding: 11px 8px;
+  }
+
+  .analytics-stat-item span {
+    font-size: 11px;
+  }
+
+  .analytics-stat-item strong {
+    font-size: clamp(13px, 4vw, 18px);
   }
 }

@@ -81,3 +81,39 @@ export function calculateSensorStats(history, sensorType) {
     trend
   };
 }
+
+export function getConnectionStatus(
+  timestamp,
+  now = Date.now()
+) {
+  if (timestamp === undefined || timestamp === null || timestamp === "") {
+    return "no-data";
+  }
+
+  let timestampMs;
+
+  if (typeof timestamp === "number") {
+    timestampMs =
+      timestamp < 1_000_000_000_000
+        ? timestamp * 1000
+        : timestamp;
+  } else {
+    timestampMs = new Date(timestamp).getTime();
+  }
+
+  if (!Number.isFinite(timestampMs)) {
+    return "no-data";
+  }
+
+  const age = Math.max(0, now - timestampMs);
+
+  if (age <= 2 * 60 * 1000) {
+    return "active";
+  }
+
+  if (age <= 5 * 60 * 1000) {
+    return "delayed";
+  }
+
+  return "no-data";
+}

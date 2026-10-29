@@ -75,3 +75,47 @@
   opacity: 0.4;
   cursor: not-allowed;
 }
+
+.sensor-history-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sensor-export-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 10px 14px;
+  border: 1px solid #b5e4d1;
+  border-radius: 10px;
+  color: #208263;
+  background: #eaf8f1;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.sensor-export-trigger:hover {
+  background: #dff4ea;
+  border-color: #86d5b5;
+}
+
+@media (max-width: 520px) {
+  .sensor-history-heading {
+    align-items: flex-start;
+  }
+
+  .sensor-export-trigger {
+    width: 100%;
+    justify-content: center;
+  }
+}

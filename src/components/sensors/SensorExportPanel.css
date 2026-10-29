@@ -1,0 +1,235 @@
+.sensor-export-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #dceee6;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fbfffd, #f2faf6);
+}
+
+.sensor-export-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sensor-export-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.sensor-export-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  color: #208263;
+  background: #e4f6ed;
+}
+
+.sensor-export-panel-title h4 {
+  margin: 0;
+  color: #18332d;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.sensor-export-panel-title p {
+  margin: 5px 0 0;
+  color: #7a8b85;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.sensor-export-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 9px 11px;
+  border: 1px solid #dce8e2;
+  border-radius: 9px;
+  color: #60736c;
+  background: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sensor-export-close:hover {
+  background: #f5faf7;
+}
+
+.sensor-export-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  min-width: 0;
+}
+
+.sensor-export-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.sensor-export-field > span {
+  color: #536c62;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sensor-export-field select,
+.sensor-export-field input {
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid #dce8e2;
+  border-radius: 9px;
+  outline: none;
+  color: #29463c;
+  background: #ffffff;
+  font: inherit;
+  font-size: 12px;
+}
+
+.sensor-export-field select:focus,
+.sensor-export-field input:focus {
+  border-color: #49cda8;
+  box-shadow: 0 0 0 3px rgba(73, 205, 168, 0.12);
+}
+
+.export-status {
+  padding: 12px 14px;
+  border: 1px solid #dce8e2;
+  border-radius: 10px;
+  color: #536c62;
+  background: #ffffff;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.export-status.success {
+  border-color: #cbe9d9;
+  color: #28684f;
+  background: #eef9f3;
+}
+
+.export-status.error {
+  border-color: #f0cccc;
+  color: #a33c3c;
+  background: #fff1f1;
+}
+
+.sensor-export-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid #f0d9a6;
+  border-radius: 10px;
+  color: #795b1d;
+  background: #fff8e9;
+  font-size: 12px;
+  line-height: 1.6;
+  animation: export-toast-in 0.2s ease-out;
+}
+
+.sensor-export-toast strong {
+  flex-shrink: 0;
+}
+
+.sensor-export-toast span {
+  min-width: 0;
+}
+
+.sensor-export-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sensor-export-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 11px 16px;
+  border: 1px solid #239b76;
+  border-radius: 10px;
+  color: #ffffff;
+  background: #238c6d;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.sensor-export-download:hover:not(:disabled) {
+  background: #187758;
+  transform: translateY(-1px);
+}
+
+.sensor-export-download:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@keyframes export-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 560px) {
+  .sensor-export-panel {
+    padding: 14px;
+  }
+
+  .sensor-export-panel-header {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .sensor-export-panel-title {
+    align-items: flex-start;
+  }
+
+  .sensor-export-panel-title p {
+    max-width: 230px;
+  }
+
+  .sensor-export-close {
+    padding: 7px;
+  }
+
+  .sensor-export-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sensor-export-actions {
+    justify-content: stretch;
+  }
+
+  .sensor-export-download {
+    width: 100%;
+  }
+}

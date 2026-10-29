@@ -27,3 +27,11 @@ export async function getSensorAlerts(params = {}) {
 
   return response.data;
 }
+
+export async function getSensorExportData() {
+  const response = await api.get(
+    `/sensors/${DEVICE_ID}/export`
+  );
+
+  return response.data;
+}
