@@ -233,3 +233,18 @@
     width: 100%;
   }
 }
+
+@media (max-width: 420px) {
+  .sensor-export-panel-header {
+    flex-wrap: wrap;
+  }
+
+  .sensor-export-panel-title {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .sensor-export-close {
+    margin-left: auto;
+  }
+}

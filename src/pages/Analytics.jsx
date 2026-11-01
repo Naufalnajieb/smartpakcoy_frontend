@@ -160,34 +160,39 @@ function Analytics() {
         </div>
 
         <div className="analytics-filters">
-          <div className="analytics-filter-group">
+          
+          {/* TIME FILTER */}
+          <div className="analytics-filter-group analytics-time-group">
             <div className="analytics-filter-label">
               <Clock3 size={16} />
               <span>Waktu</span>
             </div>
 
-            <input
-              type="time"
-              value={startTime}
-              onChange={(event) => setStartTime(event.target.value)}
-              onClick={openPicker}
-              aria-label="Waktu mulai"
-              className="analytics-time-input"
-            />
+            <div className="analytics-time-range">
+              <input
+                type="time"
+                value={startTime}
+                onChange={(event) => setStartTime(event.target.value)}
+                onClick={openPicker}
+                aria-label="Waktu mulai"
+                className="analytics-time-input"
+              />
 
-            <span className="analytics-range-separator">—</span>
+              <span className="analytics-range-separator">—</span>
 
-            <input
-              type="time"
-              value={endTime}
-              onChange={(event) => setEndTime(event.target.value)}
-              onClick={openPicker}
-              aria-label="Waktu akhir"
-              className="analytics-time-input"
-            />
+              <input
+                type="time"
+                value={endTime}
+                onChange={(event) => setEndTime(event.target.value)}
+                onClick={openPicker}
+                aria-label="Waktu akhir"
+                className="analytics-time-input"
+              />
+            </div>
           </div>
 
-          <div className="analytics-filter-group">
+          {/* DATE FILTER */}
+          <div className="analytics-filter-group analytics-date-group">
             <div className="analytics-filter-label">
               <CalendarDays size={16} />
               <span>Tanggal</span>
@@ -213,6 +218,7 @@ function Analytics() {
             {loading ? "Memuat..." : "Terapkan"}
           </button>
         </div>
+        
       </div>
 
       {error && (

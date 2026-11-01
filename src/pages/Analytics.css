@@ -11,6 +11,11 @@
   gap: 24px;
 }
 
+.analytics-header > div:first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .analytics-eyebrow {
   display: block;
   margin-bottom: 6px;
@@ -37,20 +42,36 @@
 .analytics-filters {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 10px;
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .analytics-filter-group {
   min-height: 42px;
+  padding: 0 10px;
   display: flex;
   align-items: center;
-  gap: 9px;
-  padding: 0 12px;
+  justify-content: space-between;
+  gap: 8px;
   border: 1px solid #dce7e3;
   border-radius: 11px;
   background: white;
   color: #526962;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.analytics-time-group {
+  width: 295px;
+  flex: 0 0 295px;
+}
+
+.analytics-date-group {
+  width: 215px;
+  flex: 0 0 215px;
 }
 
 .analytics-filter-label {
@@ -61,11 +82,26 @@
   font-size: 12px;
   font-weight: 700;
   white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.analytics-time-range {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .analytics-time-input,
 .analytics-date-input {
-  width: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 0 0 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
   border: 0;
   outline: 0;
   background: transparent;
@@ -73,25 +109,39 @@
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .analytics-time-input {
-  width: 88px;
+  width: 76px;
+  text-align: center;
 }
 
 .analytics-date-input {
-  width: 122px;
+  width: 112px;
+  margin-left: auto;
+  text-align: right;
 }
 
 .analytics-time-input::-webkit-calendar-picker-indicator,
 .analytics-date-input::-webkit-calendar-picker-indicator {
-  opacity: 0;
-  cursor: pointer;
+  display: none;
+}
+
+.analytics-time-input::-webkit-datetime-edit,
+.analytics-date-input::-webkit-datetime-edit {
+  padding: 0;
+}
+
+.analytics-time-input::-webkit-datetime-edit-fields-wrapper,
+.analytics-date-input::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
 }
 
 .analytics-range-separator {
   color: #98a8a2;
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .analytics-apply-button {
@@ -109,6 +159,7 @@
   font-weight: 800;
   cursor: pointer;
   transition: 0.2s ease;
+  flex-shrink: 0;
 }
 
 .analytics-apply-button:hover:not(:disabled) {
@@ -347,21 +398,40 @@
 
   .analytics-filters {
     width: 100%;
+    flex-direction: column;
+    align-items: stretch;
     justify-content: flex-start;
   }
 
-  .analytics-card-content {
-    grid-template-columns: minmax(0, 1fr) 280px;
+  .analytics-filter-group {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+    flex: 0 0 42px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
   }
-}
 
-@media (max-width: 1280px) {
+  .analytics-time-group,
+  .analytics-date-group {
+    width: 100%;
+  }
+
+  .analytics-time-range,
+  .analytics-date-input {
+    margin-left: auto;
+  }
+
   .analytics-card-content {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .analytics-statistics {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .analytics-apply-button {
+    width: 100%;
   }
 }
 
@@ -393,5 +463,67 @@
 
   .analytics-stat-item strong {
     font-size: clamp(13px, 4vw, 18px);
+  }
+
+  .analytics-filter-group {
+    padding: 0 10px;
+    gap: 8px;
+  }
+
+  .analytics-filter-label {
+    gap: 5px;
+    font-size: 11px;
+  }
+
+  .analytics-time-range {
+    gap: 4px;
+  }
+
+  .analytics-time-input {
+    width: 76px;
+    font-size: 11px;
+  }
+
+  .analytics-date-input {
+    width: 112px;
+    font-size: 11px;
+  }
+
+  .analytics-range-separator {
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .analytics-statistics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .analytics-stat-item:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .analytics-filter-group {
+    padding: 0 8px;
+    gap: 5px;
+  }
+
+  .analytics-time-range {
+    gap: 2px;
+  }
+
+  .analytics-time-input {
+    width: 72px;
+    font-size: 10px;
+  }
+
+  .analytics-date-input {
+    width: 105px;
+    font-size: 10px;
+  }
+
+  .analytics-filter-label {
+    gap: 4px;
+    font-size: 10px;
   }
 }

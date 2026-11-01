@@ -43,14 +43,16 @@
 
 .alerts-filter-group {
   min-height: 42px;
+  padding: 0 12px;
   display: flex;
   align-items: center;
-  gap: 9px;
-  padding: 0 12px;
+  justify-content: space-between;
+  gap: 8px;
   border: 1px solid #dce7e3;
   border-radius: 11px;
   background: white;
   color: #526962;
+  box-sizing: border-box;
 }
 
 .alerts-filter-label {
@@ -64,13 +66,17 @@
 }
 
 .alerts-date-input {
-  width: 135px;
+  width: 125px;
+  min-width: 0;
+  margin-left: auto;
+  padding: 0;
   border: 0;
   outline: 0;
   background: transparent;
   color: #27443c;
   font-size: 12px;
   font-weight: 700;
+  text-align: right;
   cursor: pointer;
 }
 
@@ -139,25 +145,47 @@
 }
 
 @media (max-width: 650px) {
-  .alerts-header h1 {
-    font-size: 26px;
+  .alerts-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .alerts-filters {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: stretch;
+    gap: 10px;
   }
 
   .alerts-filter-group {
-    flex: 1;
-    min-width: 0;
+    width: 100%;
+    min-height: 42px;
+    height: 42px;
+    flex: none;
+    padding: 0 12px;
+  }
+
+  .alerts-filter-label {
+    flex-shrink: 0;
   }
 
   .alerts-date-input {
-    width: 100%;
-    min-width: 0;
+    width: 125px;
+    height: 24px;
+    margin-left: auto;
+    text-align: right;
   }
 
   .alerts-apply-button {
+    width: 100%;
+    min-height: 42px;
+    height: 42px;
     flex-shrink: 0;
+  }
+
+  .alert-summary-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

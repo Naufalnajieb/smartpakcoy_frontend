@@ -379,6 +379,44 @@
   }
 
   .notification-dropdown {
-    right: -40px;
+    right: 0px;
+  }
+}
+
+@media (max-width: 360px) {
+  .dashboard-header {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .header-start {
+    gap: 6px;
+  }
+
+  .header-title {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .header-actions {
+    gap: 4px;
+    flex-wrap: nowrap;
+  }
+
+  .system-status {
+    gap: 4px;
+    font-size: 9px;
+  }
+
+  .mobile-menu-button {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .header-icon-button {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
   }
 }
