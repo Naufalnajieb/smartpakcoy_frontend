@@ -1,44 +1,64 @@
-import { AlertCircle, AlertTriangle, Bell, Info } from "lucide-react";
+import {
+  Bell,
+  AlertTriangle,
+  Database
+} from "lucide-react";
+
 import "./AlertSummary.css";
 
-const SUMMARY_ITEMS = [
-  { key: "critical", label: "Critical", icon: AlertCircle, className: "critical" },
-  { key: "warning", label: "Warning", icon: AlertTriangle, className: "warning" },
-  { key: "info", label: "Info", icon: Info, className: "info" }
-];
-
 function AlertSummary({ alerts = [] }) {
-  const counts = alerts.reduce((result, alert) => {
-    const severity = alert.severity || "info";
-    result[severity] = (result[severity] || 0) + 1;
-    return result;
-  }, { critical: 0, warning: 0, info: 0 });
+  const isMissingData = (alert) =>
+    alert.alertType === "sensor-data-missing" ||
+    /^Data .+ Tidak Tersedia$/i.test(alert.message || "");
+
+  const totalAlerts = alerts.length;
+
+  const environmentalWarnings = alerts.filter(
+    (alert) => !isMissingData(alert)
+  ).length;
+
+  const missingDataWarnings = alerts.filter(
+    isMissingData
+  ).length;
+
+  const cards = [
+    {
+      label: "Total Alert",
+      value: totalAlerts,
+      icon: Bell,
+      className: "total"
+    },
+    {
+      label: "Kondisi Greenhouse",
+      value: environmentalWarnings,
+      icon: AlertTriangle,
+      className: "environment"
+    },
+    {
+      label: "Data Sensor Hilang",
+      value: missingDataWarnings,
+      icon: Database,
+      className: "missing"
+    }
+  ];
 
   return (
     <div className="alert-summary-grid">
-      {SUMMARY_ITEMS.map(({ key, label, icon: Icon, className }) => (
-        <article className={`alert-summary-card ${className}`} key={key}>
+      {cards.map(({ label, value, icon: Icon, className }) => (
+        <article
+          className={`alert-summary-card ${className}`}
+          key={className}
+        >
           <div className="alert-summary-icon">
             <Icon size={20} />
           </div>
 
           <div>
             <span>{label}</span>
-            <strong>{counts[key]}</strong>
+            <strong>{value}</strong>
           </div>
         </article>
       ))}
-
-      <article className="alert-summary-card total">
-        <div className="alert-summary-icon">
-          <Bell size={20} />
-        </div>
-
-        <div>
-          <span>Total Alerts</span>
-          <strong>{alerts.length}</strong>
-        </div>
-      </article>
     </div>
   );
 }

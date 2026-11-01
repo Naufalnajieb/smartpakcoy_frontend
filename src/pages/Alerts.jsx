@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Bell, CalendarDays, Filter } from "lucide-react";
+import { CalendarDays, Filter } from "lucide-react";
 
 import { getSensorAlerts } from "../services/sensor_service";
 
@@ -76,12 +76,14 @@ function Alerts() {
       <div className="alerts-header">
         <div>
           <span className="alerts-eyebrow">
-            SYSTEM NOTIFICATIONS
+            ALERT MONITORING NOTIFICATIONS
           </span>
-          <h1>Alerts</h1>
+
+          <h1>Peringatan</h1>
+
           <p>
-            Pemantauan peringatan berdasarkan kondisi pembacaan
-            sensor greenhouse.
+            Pemantauan peringatan suhu, kelembapan, dan ketersediaan
+            data sensor greenhouse.
           </p>
         </div>
 
@@ -95,7 +97,9 @@ function Alerts() {
             <input
               type="date"
               value={selectedDate}
-              onChange={(event) => setSelectedDate(event.target.value)}
+              onChange={(event) =>
+                setSelectedDate(event.target.value)
+              }
               aria-label="Tanggal alert"
               className="alerts-date-input"
             />
@@ -111,7 +115,6 @@ function Alerts() {
             <span>Terapkan</span>
           </button>
         </div>
-
       </div>
 
       {error && (
@@ -120,29 +123,16 @@ function Alerts() {
         </div>
       )}
 
-      <AlertSummary alerts={alerts} />
-
-      <div className="alerts-status-banner">
-        <div className="alerts-status-icon">
-          <Bell size={18} />
-        </div>
-
-        <div>
-          <strong>Alert engine aktif</strong>
-          <span>
-            Sistem mendeteksi perubahan kondisi suhu dan kelembapan
-            berdasarkan rule lingkungan.
-          </span>
-        </div>
-      </div>
-
       {loading ? (
         <div className="alert-loading">
-          Memuat data alert...
+          Memuat data peringatan...
         </div>
-      ) : (
-        <AlertTable alerts={alerts} />
-      )}
+      ) : !error ? (
+        <>
+          <AlertSummary alerts={alerts} />
+          <AlertTable alerts={alerts} />
+        </>
+      ) : null}
     </section>
   );
 }

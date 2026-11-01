@@ -17,6 +17,11 @@ const SEVERITY_CONFIG = {
   warning: { label: "Warning", className: "warning" },
   info: { label: "Info", className: "info" }
 };
+const SENSOR_LABELS = {
+  temperature: "Suhu",
+  humidity: "Kelembapan",
+  lightIntensity: "Intensitas Cahaya"
+};
 
 function AlertTable({ alerts = [] }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -92,7 +97,9 @@ function AlertTable({ alerts = [] }) {
                   return (
                     <tr key={alert.id || `${alert.timestamp}-${alert.sensorType}`}>
                       <td>{formatDateTime(alert.timestamp)}</td>
-                      <td>{alert.sensorType || "--"}</td>
+                      <td>
+                        {SENSOR_LABELS[alert.sensorType] || alert.sensorType || "--"}
+                      </td>
                       <td>{alert.message || "--"}</td>
                       <td>
                         {alert.value !== undefined && alert.value !== null
